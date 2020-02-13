@@ -11,24 +11,24 @@ import Foundation
 //The CharacterDetection class takes a character in as an inital value and can check to see if the character is a uppercase, lowercase or digit
 public class CharacterDetection {
     
-    private var character: String
+    private var character: Character
     
-    private var uppercaseLetters: [String] = [
+    private let uppercaseLetters: [Character] = [
         "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q",
         "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
     ]
     
-    private var lowercaseLetters: [String] = [
+    private let lowercaseLetters: [Character] = [
         "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q",
         "r", "s", "t", "u", "v", "w", "x", "y", "z"
     ]
     
-    private var digits: [String] = [
+    private let digits: [Character] = [
         "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"
     ]
     
     
-    init(character: String) {
+    init(character: Character) {
         
         self.character = character
         
@@ -49,5 +49,7 @@ public class CharacterDetection {
         return self.digits.contains(character)
     }
     
-    
+    public func get() -> String {
+        return String(character)
+    }
 }

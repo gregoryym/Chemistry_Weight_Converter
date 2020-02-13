@@ -16,6 +16,8 @@
 		F39B589723F5B87500F3AD6D /* ChemistryWeightConverterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39B589623F5B87500F3AD6D /* ChemistryWeightConverterUITests.swift */; };
 		F39B58A523F5B8C000F3AD6D /* Atom.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39B58A423F5B8C000F3AD6D /* Atom.swift */; };
 		F39B58A723F5B8C600F3AD6D /* CharacterDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39B58A623F5B8C600F3AD6D /* CharacterDetection.swift */; };
+		F39B58AA23F5C38900F3AD6D /* Molecule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39B58A923F5C38900F3AD6D /* Molecule.swift */; };
+		F39B58AC23F5D51700F3AD6D /* lightBlueBox.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F39B58AB23F5D51600F3AD6D /* lightBlueBox.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		F39B589823F5B87500F3AD6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F39B58A423F5B8C000F3AD6D /* Atom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Atom.swift; sourceTree = "<group>"; };
 		F39B58A623F5B8C600F3AD6D /* CharacterDetection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterDetection.swift; sourceTree = "<group>"; };
+		F39B58A923F5C38900F3AD6D /* Molecule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Molecule.swift; sourceTree = "<group>"; };
+		F39B58AB23F5D51600F3AD6D /* lightBlueBox.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = lightBlueBox.jpg; path = ChemistryWeightConverter/lightBlueBox.jpg; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,7 @@
 				F39B587823F5B87500F3AD6D /* ViewController.swift */,
 				F39B587A23F5B87500F3AD6D /* Main.storyboard */,
 				F39B587D23F5B87500F3AD6D /* Assets.xcassets */,
+				F39B58AB23F5D51600F3AD6D /* lightBlueBox.jpg */,
 				F39B587F23F5B87500F3AD6D /* LaunchScreen.storyboard */,
 				F39B588223F5B87500F3AD6D /* Info.plist */,
 			);
@@ -135,6 +140,7 @@
 			children = (
 				F39B58A623F5B8C600F3AD6D /* CharacterDetection.swift */,
 				F39B58A423F5B8C000F3AD6D /* Atom.swift */,
+				F39B58A923F5C38900F3AD6D /* Molecule.swift */,
 			);
 			path = "Molecule Classes";
 			sourceTree = "<group>";
@@ -243,6 +249,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F39B58AC23F5D51700F3AD6D /* lightBlueBox.jpg in Resources */,
 				F39B588123F5B87500F3AD6D /* LaunchScreen.storyboard in Resources */,
 				F39B587E23F5B87500F3AD6D /* Assets.xcassets in Resources */,
 				F39B587C23F5B87500F3AD6D /* Main.storyboard in Resources */,
@@ -272,6 +279,7 @@
 			files = (
 				F39B587923F5B87500F3AD6D /* ViewController.swift in Sources */,
 				F39B58A523F5B8C000F3AD6D /* Atom.swift in Sources */,
+				F39B58AA23F5C38900F3AD6D /* Molecule.swift in Sources */,
 				F39B587723F5B87500F3AD6D /* AppDelegate.swift in Sources */,
 				F39B58A723F5B8C600F3AD6D /* CharacterDetection.swift in Sources */,
 			);
