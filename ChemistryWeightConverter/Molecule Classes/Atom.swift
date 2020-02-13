@@ -20,6 +20,10 @@ public class Atom {
         getProperties()
     }
     
+    public func getAtomicWeight() -> Double {
+        return self.atomicWeight
+    }
+    
     //Atomic numbers from 1-56 and 72-83
     private func getProperties() {
         

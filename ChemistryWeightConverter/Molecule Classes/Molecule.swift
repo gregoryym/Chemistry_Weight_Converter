@@ -12,28 +12,43 @@ public class Molecule {
     
     private var atoms: [Atom] = []
     
+    var element: String = ""
+    var moles: String = ""
+    var atomCount: String = ""
+    
+    
     init(molecule: String) {
         dissectMolecule(molecule: molecule)
+        print("f")
     }
     
     
     private func dissectMolecule(molecule: String) {
         
-        var element: String = ""
-        var moles: String = ""
-        var atomCount: String = ""
+        
         
         var i = 0
         
         while i < molecule.count {
             
             let index = molecule.index(molecule.startIndex, offsetBy: i)
-            let indexBefore = molecule.index(molecule.startIndex, offsetBy: i - 1)
-            let indexAfter = molecule.index(molecule.startIndex, offsetBy: i + 1)
-            
             let character = CharacterDetection(character: molecule[index])
-            let characterBefore = CharacterDetection(character: molecule[indexBefore])
-            let characterAfter = CharacterDetection(character: molecule[indexAfter])
+            
+            var characterBefore: CharacterDetection?
+            var characterAfter: CharacterDetection?
+            
+            //Checks to see if there is a character before
+            if (i != 0) {
+                let indexBefore = molecule.index(molecule.startIndex, offsetBy: i - 1)
+                characterBefore = CharacterDetection(character: molecule[indexBefore])
+            }
+            //Checks to see if there is a character after
+            if (i != molecule.count - 1) {
+                let indexAfter = molecule.index(molecule.startIndex, offsetBy: i + 1)
+                characterAfter = CharacterDetection(character: molecule[indexAfter])
+            }
+            
+            
             
             //This if statement checks to see if the index is in the beginning of the string
             if i == 0 {
@@ -48,9 +63,9 @@ public class Molecule {
                 else if character.isDigit() {
                     
                     //If statement checks to see if the character after is also a digit
-                    if characterAfter.isDigit() {
+                    if characterAfter!.isDigit() {
                         //If so...The two characters get concatenated together and becomes the moles of the molecule
-                        moles = character.get() + characterAfter.get()
+                        moles = character.get() + characterAfter!.get()
                         //increases the index because the index after was checked
                         i += 1
                     }
@@ -58,15 +73,13 @@ public class Molecule {
                     else {
                         moles = character.get()
                     }
-                    
                 }
-                
             }
             
             //If statement checks to see if the character is an uppercase letter - thats the start of a new element
             if character.isUpperCase() && i != 0 {
                 //This if statement checks to see if the character before was not a digit - If the character before was a letter then an atom is created with that atomic symbol and the variable element is changed to the new capital letter
-                if !characterBefore.isDigit() { atoms.append(Atom(atomicNumber: findAtomicNumber(atomicSymbol: element))) }
+                if !characterBefore!.isDigit() { atoms.append(Atom(atomicNumber: findAtomicNumber(atomicSymbol: element))) }
                 //The character is set to the variable that holds the atomic symbol
                 element = character.get()
             }
@@ -80,25 +93,29 @@ public class Molecule {
                 //Sets the character to the count of atoms
                 atomCount = character.get()
                 
+//                //Creates an atom with the String in element
+//                atoms.append(Atom(atomicNumber: findAtomicNumber(atomicSymbol: element)))
+                
                 //Checks to see if there is an index after
                 if (i + 1) < molecule.count {
                     //If an index exist, then it checks tos see if that character is an digit
-                    if characterAfter.isDigit() {
+                    if characterAfter!.isDigit() {
                         //If the character at the index and after are both digits then they get concatenated together
-                        atomCount = atomCount + characterAfter.get()
+                        atomCount = atomCount + characterAfter!.get()
                         //increases the index because the character after is a digit and was checked
                         i += 1
                     }
                     
-                    var j = 0
-                    //Creates the number of atoms that is held in the integer value of atom count - creates j amount of the element that is held in the element String
-                    while j < Int(atomCount)! {
-                        //A new atom is created with the atomic symbol that is held in the element string
-                        atoms.append(Atom(atomicNumber: findAtomicNumber(atomicSymbol: element)))
-                        //moves onto the next index
-                        j += 1
-                    }
-                    
+                }
+                
+                var j = 0
+                //Creates the number of atoms that is held in the integer value of atom count - creates j amount of the element that is held in the element String
+                
+                while j < Int(atomCount)! {
+                    //A new atom is created with the atomic symbol that is held in the element string
+                    atoms.append(Atom(atomicNumber: findAtomicNumber(atomicSymbol: element)))
+                    //moves onto the next index
+                    j += 1
                 }
             }
             
@@ -111,6 +128,25 @@ public class Molecule {
             
         }
         
+    }
+    
+    //Function that adds all of the atomic weights in the molecule
+    public func getMolecularWeight() -> Double {
+        
+        //Variable to add all the atoms weights together
+        var molecularWeight: Double = 0.0
+        
+        //index variable
+        var i = 0
+        //Loops through the atom array list
+        while i < atoms.count {
+            //Adds all the atomic weights together
+            molecularWeight = molecularWeight + atoms[i].getAtomicWeight()
+            //next
+            i += 1
+        }
+        //returns the molecular weight of the molecule 
+        return molecularWeight
     }
     
     //Function that takes an atomic symbol and finds the corresponding atomic number
